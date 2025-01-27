@@ -1,3 +1,40 @@
-#! /bin/bash
+#!/bin/bash
 
-echo "this is script file"
+while true; do
+  # Print date and separator
+  date
+  echo "=============================================="
+
+  # Function to Check Disk Usage
+  check_disk_usage_fun() {
+    Disk_Usage_var=$(df -h | awk '$NF=="/" {print $5}') 
+    echo "Disk usage is: $Disk_Usage_var%"
+    if [[ "$Disk_Usage_var" -ge 80 ]]; then
+      echo "WARNING: Disk usage is above 80%!"
+      echo "Warning" | mail -s "Your device disk usage is greater than 80%" amrelabbasy2003@gmail.com
+    fi
+  }
+
+  # Call the function to check disk usage
+  check_disk_usage_fun
+
+  echo "=============================================="
+  # Function to Check CPU Usage
+  check_cpu_usage_fun() {
+    # Extract idle percentage from the `top` command, calculate CPU usage
+    cpu_usage_var=$(top -b -n1 | grep "Cpu(s)" | awk '{printf "%.2f\n", 100 - $8}')
+    echo "CPU usage is: $cpu_usage_var%"
+  }
+
+  # Call the function to check CPU usage
+  check_cpu_usage_fun
+
+  echo "=============================================="
+  #function to check memory usage :
+  mem_usage_fun(){
+
+  }
+  # Wait for 5 seconds before checking again
+  sleep 5
+done
+
