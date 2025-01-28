@@ -1,4 +1,4 @@
-# Monitoring_Scratch
+# Monitoring_Script
 
 This is a bash script that monitors system resources including disk usage, CPU usage, memory usage, and running processes. It logs the system status to a log file and sends notifications if certain thresholds are exceeded (e.g., disk usage over 80%).
 
