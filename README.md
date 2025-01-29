@@ -73,8 +73,5 @@ ssh -T git@github.com
 6. push it to remote server
 
 ## CronJob to automate the script file 
+![Cron_File](https://github.com/user-attachments/assets/26c2cad7-e27a-4c4f-9d71-e291d64a5f58)
 
-![image](https://github.com/user-attachments/assets/4e96ff71-cd73-459a-8bc4-1c869fb44294)
-
-
-   
