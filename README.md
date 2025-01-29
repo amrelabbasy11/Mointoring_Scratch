@@ -71,4 +71,7 @@ ssh -T git@github.com
 4. git add (name of scrtach file)
 5. git commit -m " text"
 6. push it to remote server
+
+![image](https://github.com/user-attachments/assets/2ce52146-f82e-4957-b7be-766db78d67ba)
+
    
