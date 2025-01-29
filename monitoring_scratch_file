@@ -1,58 +1,48 @@
 #!/bin/bash
 
-# Log file path
-log_file="/var/log/monitoring_infs.log"
+# Function to check disk usage with alert
+check_disk_usage_fun() {
+  disk_usage=$(df -h | awk '$NF=="/" {print $5}' | tr -d '%')
 
-# Function to log output to the log file
-log_file_fun() {
-  echo "$(date) $1" >> "$log_file"
-}
-
-# Start logging
-log_file_fun "===================== Script Started ======================"
-
-# Checking Disk Usage
-log_file_fun "============== Start Checking Disk usage ================"
-  check_disk_usage_fun() {
-  Disk_Usage_var=$(df -h | awk '$NF=="/" {print $5}' | tr -d '%')
-
-  if [[ "$Disk_Usage_var" -ge 80 ]]; then
-  echo "WARNING: Disk usage is above 80%" >> "$log_file"
-  echo "Warning" | mail -s "Your device disk usage is greater than 80%" amrelabbasy2003@gmail.com
+  if [[ "$disk_usage" -ge 80 ]]; then
+    echo "WARNING: Disk usage is above 80%"
+    echo "Warning" | mail -s "Your device disk usage is greater than 80%" amrelabbasy2003@gmail.com
   fi
-
+ echo "Disk Usage: $disk_usage%"
 }
-check_disk_usage_fun
-log_file_fun "=============== End checking Disk usage ================="
 
-# Checking CPU Usage
-log_file_fun "============== Start Checking CPU usage ================"
+# Function to check CPU usage
 check_cpu_usage_fun() {
-  cpu_usage_var=$(top -b -n1 | grep "Cpu(s)" | awk '{printf "%.2f\n", 100 - $8}')
-  echo "CPU usage is: $cpu_usage_var%" >> "$log_file"
+  cpu_usage=$(top -b -n1 | grep "Cpu(s)" | awk '{printf "%.2f\n", 100 - $8}')
+  echo "CPU usage is: $cpu_usage%"
 }
-check_cpu_usage_fun
-log_file_fun "============== End Checking CPU usage ================"
 
-# Checking Memory Usage
-log_file_fun "============== Start Checking memory usage ================"
+# Function to check memory usage
 mem_usage_fun() {
-  mem_usage_var=$(free -h | awk 'NR==2 {printf "Total: %s, Used: %s, Free: %s\n", $2, $3, $4}')
-  echo "Memory Usage is : $mem_usage_var" >> "$log_file"
+  mem_usage=$(free -h | awk 'NR==2 {printf "Total: %s, Used: %s, Free: %s\n", $2, $3, $4}')
+  echo "Memory Usage is : $mem_usage%"
 }
-mem_usage_fun
-log_file_fun "============== End Checking memory usage ================"
 
-# Checking Running Processes
-log_file_fun "============== Start Checking Running Process ==============="
+# Function to check top 5 running processes
 running_process_fun() {
-  running_process_var=$(ps -eo pid,user,%mem,comm | sort -nrk 3,3 | head -n 5)
-  echo "Top 5 Running processes are:" >> "$log_file"
-  echo "$running_process_var" >> "$log_file"
+  running_processes=$(ps -eo pid,user,%mem,comm | sort -nrk 3,3 | head -n 5)
+  echo "Top 5 Running processes are:"
+  echo "$running_processes"
 }
+
+# Main execution block
+echo " =============== Start Reporting  =============== "
+
+echo " =========  Disk Usage  ========= "
+check_disk_usage_fun
+
+echo " ========= Checking CPU Usage  ========= "
+check_cpu_usage_fun
+
+echo " =========  Memory Usage  ========= "
+mem_usage_fun
+
+echo " ========= Top 5 Process running  ========= "
 running_process_fun
-log_file_fun "============== End Checking Running Process ==============="
 
-# End logging
-log_file_fun "===================== Script Ended ======================"
-
+echo " =============== End Reporting  =============== "
