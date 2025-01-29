@@ -72,6 +72,8 @@ ssh -T git@github.com
 5. git commit -m " text"
 6. push it to remote server
 
+## CronJob to automate the script file 
+
 ![image](https://github.com/user-attachments/assets/2ce52146-f82e-4957-b7be-766db78d67ba)
 
    
