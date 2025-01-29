@@ -1,66 +1,57 @@
 #!/bin/bash
- 
- #log file path
- log_file=/var/log/mointoring_scratch_infs.log
- #function to log file
- echo "=============================================="
-  log_file_fun(){
-   echo "$(date) $1" >> log_file
- }
- echo "=============================================="
 
-while true; do
-  echo "============== Start Checking Disk usage ================"
+# Log file path
+log_file="/var/log/mointoring_scratch_infs.log"
 
-  # Function to Check Disk Usage
-  check_disk_usage_fun() {
-    Disk_Usage_var=$(df -h | awk '$NF=="/" {print $5}') 
-    echo "Disk usage is: $Disk_Usage_var%"
-    if [[ "$Disk_Usage_var" -ge 80 ]]; then
-      echo "WARNING: Disk usage is above 80%!"
-      echo "Warning" | mail -s "Your device disk usage is greater than 80%" amrelabbasy2003@gmail.com
-    fi
-  }
+# Function to log output to the log file
+log_file_fun() {
+  echo "$(date) $1" >> "$log_file"
+}
 
-  # Call the function to check disk usage
-  check_disk_usage_fun
+# Start logging
+log_file_fun "===================== Script Started ======================"
 
-  echo "=============== End checking Disk usage ================="
-  echo "============== Start Checking CPU usage ================"
-  # Function to Check CPU Usage
-  check_cpu_usage_fun() {
-    # Extract idle percentage from the `top` command, calculate CPU usage
-    cpu_usage_var=$(top -b -n1 | grep "Cpu(s)" | awk '{printf "%.2f\n", 100 - $8}')
-    echo "CPU usage is: $cpu_usage_var%"
-  }
+# Checking Disk Usage
+log_file_fun "============== Start Checking Disk usage ================"
+check_disk_usage_fun() {
+  Disk_Usage_var=$(df -h | awk '$NF=="/" {print $5}')
+  echo "Disk usage is: $Disk_Usage_var%" >> "$log_file"
+  if [[ "$Disk_Usage_var" -ge 80 ]]; then
+    echo "WARNING: Disk usage is above 80%" >> "$log_file"
+    echo "Warning" | mail -s "Your device disk usage is greater than 80%" amrelabbasy2003@gmail.com
+  fi
+}
+check_disk_usage_fun
+log_file_fun "=============== End checking Disk usage ================="
 
-  # Call the function to check CPU usage
-  check_cpu_usage_fun
+# Checking CPU Usage
+log_file_fun "============== Start Checking CPU usage ================"
+check_cpu_usage_fun() {
+  cpu_usage_var=$(top -b -n1 | grep "Cpu(s)" | awk '{printf "%.2f\n", 100 - $8}')
+  echo "CPU usage is: $cpu_usage_var%" >> "$log_file"
+}
+check_cpu_usage_fun
+log_file_fun "============== End Checking CPU usage ================"
 
-  echo "============== End Checking CPU usage ================"
-  echo "============== start Checking memory usage ================"
+# Checking Memory Usage
+log_file_fun "============== Start Checking memory usage ================"
+mem_usage_fun() {
+  mem_usage_var=$(free -h | awk 'NR==2 {printf "Total: %s, Used: %s, Free: %s\n", $2, $3, $4}')
+  echo "Memory Usage is : $mem_usage_var" >> "$log_file"
+}
+mem_usage_fun
+log_file_fun "============== End Checking memory usage ================"
 
-  #function to check memory usage :
-  mem_usage_fun(){
-  #NR in awk stands for "Number of Record" and refers to the current line number being processed.
-  #NR==2: Refers to the second line of the output (Second Row)
-   mem_usage_var=$(free -h | awk 'NR==2 {printf "Total: %s, Used: %s, Free: %s\n", $2, $3, $4}')
-   echo "Memory Usage is : $mem_usage_var"
-  }
+# Checking Running Processes
+log_file_fun "============== Start Checking Running Process ==============="
+running_process_fun() {
+  running_process_var=$(ps -eo pid,user,%mem,comm | sort -nrk 3,3 | head -n 5)
+  echo "Top 5 Running processes are:" >> "$log_file"
+  echo "$running_process_var" >> "$log_file"
+}
+running_process_fun
+log_file_fun "============== End Checking Running Process ==============="
 
-  #calling Memory Usage function
-  mem_usage_fun
-  echo "============== End Checking memory usage ================"
-  echo "============== Start Checking Running Process ==============="
-  running_process_fun(){
-   running_process_var=$(ps -eo pid,user,%mem,comm | sort -nrk 3,3 | head -n 5)
-   echo "Top 5 Running procceses are :\n $running_process_var"
-  }
-  #calling running procces function
-  running_process_fun 
-  echo "============== End Checking Running Process ==============="
-
-  # Wait for 5 seconds before checking again
-  sleep 5
-done
+# End logging
+log_file_fun "===================== Script Ended ======================"
 
