@@ -1,3 +1,4 @@
- # the script will repeat every minute 
+# the script will repeat every minute 
+
  * * * * * sudo /home/ubuntu/System_Monitoring_Script/monitoring_script_file  &>> /var/log/monitoring_infs.log
 
