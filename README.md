@@ -75,3 +75,8 @@ ssh -T git@github.com
 ## CronJob to automate the script file 
 ![Cron_File](https://github.com/user-attachments/assets/26c2cad7-e27a-4c4f-9d71-e291d64a5f58)
 
+## Mail image ![1000089824](https://github.com/user-attachments/assets/61676cc4-02e1-475a-8088-8caf357fc7b5)
+
+## Sctipt output 
+![1000089825](https://github.com/user-attachments/assets/3755e457-6f6d-40c1-b172-b816ae073f3f)
+
