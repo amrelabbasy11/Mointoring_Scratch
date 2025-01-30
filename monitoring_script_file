@@ -6,7 +6,7 @@ check_disk_usage_fun() {
 
   if [[ "$disk_usage" -ge 80 ]]; then
     echo "WARNING: Disk usage is above 80%"
-    echo "Warning" | mail -s "Your device disk usage is greater than 80%" amrelabbasy2003@gmail.com
+    echo "Warning: Disk usage exceeded 80%. Please take proper actions." | mail -s "Disk Usage Warning" -a "From: Monitor System" amrelabbasy2003@gmail.com 
   fi
  echo "Disk Usage: $disk_usage%"
 }
@@ -46,3 +46,4 @@ echo " ========= Top 5 Process running  ========= "
 running_process_fun
 
 echo " =============== End Reporting  =============== "
+
