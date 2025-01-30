@@ -31,19 +31,18 @@ running_process_fun() {
 }
 
 # Main execution block
-echo " =============== Start Reporting  =============== "
+echo " =============== Start Reporting  =============== "
 
-echo " =========  Disk Usage  ========= "
+echo " =========  Disk Usage  ========= "
 check_disk_usage_fun
 
-echo " ========= Checking CPU Usage  ========= "
+echo " ========= Checking CPU Usage  ========= "
 check_cpu_usage_fun
 
-echo " =========  Memory Usage  ========= "
+echo " =========  Memory Usage  ========= "
 mem_usage_fun
 
-echo " ========= Top 5 Process running  ========= "
+echo " ========= Top 5 Process running  ========= "
 running_process_fun
 
-echo " =============== End Reporting  =============== "
-
+echo " =============== End Reporting  =============== "
