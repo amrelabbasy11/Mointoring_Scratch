@@ -1,0 +1,45 @@
+ =============== Start Reporting  =============== 
+ =========  Disk Usage  ========= 
+Disk Usage: 23%
+ ========= Checking CPU Usage  ========= 
+CPU usage is: 11.50%
+ =========  Memory Usage  ========= 
+Memory Usage is : Total: 7.2Gi, Used: 2.1Gi, Free: 3.8Gi%
+ ========= Top 5 Process running  ========= 
+Top 5 Running processes are:
+   4038 amr-ela+  7.3 firefox
+   2799 amr-ela+  3.8 gnome-shell
+   5170 amr-ela+  3.2 Isolated Web Co
+   4979 amr-ela+  3.2 Isolated Web Co
+   5226 amr-ela+  2.0 Isolated Web Co
+ =============== End Reporting  =============== 
+ =============== Start Reporting  =============== 
+ =========  Disk Usage  ========= 
+Disk Usage: 23%
+ ========= Checking CPU Usage  ========= 
+CPU usage is: 13.60%
+ =========  Memory Usage  ========= 
+Memory Usage is : Total: 7.2Gi, Used: 2.1Gi, Free: 3.8Gi%
+ ========= Top 5 Process running  ========= 
+Top 5 Running processes are:
+   4038 amr-ela+  7.3 firefox
+   2799 amr-ela+  3.9 gnome-shell
+   4979 amr-ela+  3.2 Isolated Web Co
+   5170 amr-ela+  3.1 Isolated Web Co
+   5226 amr-ela+  2.0 Isolated Web Co
+ =============== End Reporting  =============== 
+ =============== Start Reporting  =============== 
+ =========  Disk Usage  ========= 
+Disk Usage: 23%
+ ========= Checking CPU Usage  ========= 
+CPU usage is: 83.30%
+ =========  Memory Usage  ========= 
+Memory Usage is : Total: 7.2Gi, Used: 2.1Gi, Free: 3.8Gi%
+ ========= Top 5 Process running  ========= 
+Top 5 Running processes are:
+   4038 amr-ela+  7.4 firefox
+   2799 amr-ela+  3.9 gnome-shell
+   4979 amr-ela+  3.2 Isolated Web Co
+   5170 amr-ela+  3.1 Isolated Web Co
+   5226 amr-ela+  2.0 Isolated Web Co
+ =============== End Reporting  =============== 
