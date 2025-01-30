@@ -1,2 +1,3 @@
  this script will repeat the script every 1 minute 
-* * * * *  /home/ubuntu/System_Monitoring_Script/monitoring_script_file &>> /var/log/monitoring.log
+* * * * * /home/ubuntu/System-Monitoring-Script/monitoring_script_file &>> /var/log/monitoring.log
+
