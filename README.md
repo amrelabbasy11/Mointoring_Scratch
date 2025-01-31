@@ -72,11 +72,15 @@ ssh -T git@github.com
 5. git commit -m " text"
 6. push it to remote server
 
-## CronJob to automate the script file 
-![Cron_File](https://github.com/user-attachments/assets/26c2cad7-e27a-4c4f-9d71-e291d64a5f58)
+## Log File Output
 
-## Mail image ![1000089824](https://github.com/user-attachments/assets/61676cc4-02e1-475a-8088-8caf357fc7b5)
+![WhatsApp Image 2025-01-31 at 01 25 50_790d6cd7](https://github.com/user-attachments/assets/e3a5d692-e419-4f57-93b9-5a9d15f26363)
 
-## Sctipt output 
-![1000089825](https://github.com/user-attachments/assets/3755e457-6f6d-40c1-b172-b816ae073f3f)
+## cron file
+![WhatsApp Image 2025-01-31 at 08 53 51_cb7693f6](https://github.com/user-attachments/assets/64eeee41-bf77-4839-b92e-d036ea8c9fee)
+
+
+## Mail image
+![1000089824](https://github.com/user-attachments/assets/61676cc4-02e1-475a-8088-8caf357fc7b5)
+
 
